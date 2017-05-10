@@ -56,9 +56,11 @@ var relPaths = {
 var patterns = {
   testSources: path.join(absPaths.clientSrc, '**/*.spec.ts'),
   appSources: path.join(absPaths.clientSrc, '**/!(*.spec).ts'),
+  // See https://github.com/angular/angular/issues/11580
+  // https://github.com/angular/angular/issues/14898
+  // https://github.com/angular/angular.io/issues/3514
   // The (\\|\/) piece accounts for path separators in *nix and Windows
   //angularContext: /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-  // see https://github.com/angular/angular.io/issues/3514
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
 };
 

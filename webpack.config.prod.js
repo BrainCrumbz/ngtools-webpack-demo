@@ -87,7 +87,6 @@ var config = {
     }),
 
     // Provides context to Angular's use of System.import
-    // See https://github.com/angular/angular/issues/11580
     new webpack.ContextReplacementPlugin(
       common.patterns.angularContext,
       common.absPaths.clientSrc
