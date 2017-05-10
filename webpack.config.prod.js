@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ngToolsWebpack = require('@ngtools/webpack');
+
 var common = require('./webpack.common.js');
 
 // ensure production environment
@@ -96,6 +98,11 @@ var config = {
       name: ['main', 'vendor'],
       filename: common.relPaths.bundle,
       minChunks: mod => /node_modules/.test(mod.resource),
+    }),
+
+    // use @ngtools for AoT build
+    new ngToolsWebpack.AotPlugin({
+      tsConfigPath: './tsconfig-aot.json'
     }),
 
     // Minimize scripts

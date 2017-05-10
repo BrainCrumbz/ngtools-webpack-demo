@@ -14,7 +14,6 @@
       "bundle-dev":  "webpack --config ./webpack.config.dev.js  --display-error-details --display-cached --progress --profile --colors",
       "bundle-watch": "npm run bundle-dev -- --watch",
       "bundle-prod": "webpack --config ./webpack.config.prod.js --display-error-details --display-cached --progress --profile --colors",
-        "prebundle-prod": "npm run compile-prod",
 
     "build": "npm run build-dev",
       "build-dev":  "npm run bundle-dev",

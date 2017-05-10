@@ -107,6 +107,12 @@ var rules = {
 
   typescriptAot: {
     test: /\.ts$/,
+    // use @ngtools loader
+    use: [{
+      loader: '@ngtools/webpack',
+    }],
+    // use regular JiT loader, with AoT options
+    /*
     use: [{
       loader: tsLoaderJit,
       options: {
@@ -122,6 +128,7 @@ var rules = {
         debug: false,
       },
     }],
+    */
     include: [
       absPaths.clientSrc,
       absPaths.codegen, // include (AOT) generated code
