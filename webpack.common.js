@@ -4,6 +4,11 @@ var autoprefixer = require('autoprefixer');
 // TODO delete watchpack explicit dependency from package.json when
 // webpack fixes issue https://github.com/webpack/webpack/issues/4341
 
+var tsLoaderJit = 'awesome-typescript-loader';
+/*
+var tsLoaderJit = 'ts-loader';
+*/
+
 var ports = {
   // local dev server port
   default: 51254,
@@ -52,7 +57,9 @@ var patterns = {
   testSources: path.join(absPaths.clientSrc, '**/*.spec.ts'),
   appSources: path.join(absPaths.clientSrc, '**/!(*.spec).ts'),
   // The (\\|\/) piece accounts for path separators in *nix and Windows
-  angularContext: /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+  //angularContext: /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+  // see https://github.com/angular/angular.io/issues/3514
+  angularContext: /angular(\\|\/)core(\\|\/)@angular/,
 };
 
 var rules = {
@@ -74,14 +81,14 @@ var rules = {
 
   // normal loaders
 
-  // all `.ts` files will be compiled through tsc by `awesome-typescript-loader`.
+  // all `.ts` files will be compiled through tsc by chosen tsLoaderJit.
   // `angular2-template-loader` converts template/style URLs into inlined template/styles.
   // `angular-router-loader` replaces string-based module lazy loading routes with actual
   // `loadChildren` router instructions
   typescriptJit: {
     test: /\.ts$/,
     use: [
-      'awesome-typescript-loader',
+      tsLoaderJit,
       'angular2-template-loader',
       'angular-router-loader',
     ],
@@ -99,7 +106,7 @@ var rules = {
   typescriptAot: {
     test: /\.ts$/,
     use: [{
-      loader: 'awesome-typescript-loader',
+      loader: tsLoaderJit,
       options: {
         configFileName: './tsconfig-aot.json',
       },
@@ -127,7 +134,7 @@ var rules = {
   typescriptTest: {
     test: /\.ts$/,
     use: [
-      'awesome-typescript-loader',
+      tsLoaderJit,
       'angular2-template-loader',
     ],
     include: [
@@ -268,7 +275,9 @@ var resolve = {
   extensions: ['.ts', '.js', '.json'],
 
   // resolve modules also looking in those paths
-  modules: [absPaths.nodeModules],
+  modules: [
+    absPaths.nodeModules,
+  ],
 };
 
 function buildDefines() {
