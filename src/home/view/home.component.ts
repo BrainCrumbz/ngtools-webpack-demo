@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
       <div class="col-md-12">
         <div class="well">
           <h2>Home</h2>
-          <p>This is the home page content</p>
-          <p>This is a link to <a routerLink="/private">private area</a><p>
+          <p>This is the home page content.</p>
+          <p>It has a link to <a routerLink="/private">private area</a>, in a lazily loaded module.<p>
         </div>
       </div>
     </div>
