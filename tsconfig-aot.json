@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "skipDefaultLibCheck": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "pretty": true,
+    "sourceMap": true,
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/typedefs-manual"
+    ],
+    "types": [
+      "requirejs"
+    ],
+    "outDir": "buildOutput"
+  },
+  "exclude": [
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts",
+    "src/**/*-jit.ts",
+    "src/app/module-dev.ts",
+    "buildOutput",
+    "codegen",
+    "coverage",
+    "node_modules"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "codegen",
+    "skipMetadataEmit" : true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}

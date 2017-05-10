@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "skipDefaultLibCheck": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "pretty": true,
+    "sourceMap": true,
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/typedefs-manual"
+    ],
+    "types": [
+      "requirejs"
+    ],
+    "outDir": "buildOutput"
+  },
+  "exclude": [
+    "src/**/*-aot.ts",
+    "src/app/module-prod.ts",
+    "buildOutput",
+    "codegen",
+    "coverage",
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

@@ -1,0 +1,30 @@
+// Inserire le impostazioni in questo file per sovrascrivere quelle utente e predefinite.
+{
+  "trailing-spaces.trimOnSave": true,
+
+  // non rimuovere gli spazi a fine riga per i file nei linguaggi seguenti
+  "trailing-spaces.syntaxIgnore": [
+    "markdown"
+  ],
+
+  // Numero di spazi a cui equivale una tabulazione.
+  "editor.tabSize": 2,
+
+  // Consente di configurare i criteri di ricerca GLOB per escludere file e cartelle.
+  "files.exclude": {
+    "**/buildOutput": true,
+    "**/codegen": true,
+    "**/coverage": true,
+    "**/node_modules": true,
+    "**/typings": true,
+    "**/*.bak": true,
+    "**/*.orig": true,
+    "**/*.stats": true,
+    "**/*.js": { "when": "$(basename).ts" },
+    "**/*.js.map": true
+ },
+
+  // Specifica il percorso della cartella che contiene i file tsserver e lib*.d.ts da usare.
+  "typescript.tsdk": "node_modules/typescript/lib"
+
+}

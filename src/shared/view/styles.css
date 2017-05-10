@@ -1,0 +1,67 @@
+/* styles common to all pages, apps, modules */
+
+/* apply rotation to items (e.g. glyphicons)*/
+
+.spinning-icon {
+  /* Chr, Saf */
+  -webkit-animation: spin 1500ms infinite linear;
+  /* IE >9, Fx >15, Op >12.0 */
+  animation: spin 1500ms infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* blank glyphicons placeholder */
+
+.glyphicon-none:before {
+  content: "\2122";
+  color: transparent !important;
+}
+
+/* problem visual feedback */
+
+.has-problem {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.has-problem.invisible {
+  opacity: 0;
+}
+
+/* add enable/disable animation to all buttons, unless explicitly noted */
+
+button {
+  transition: opacity 0.3s;
+}
+
+button.no-enable-anim {
+  transition: opacity 0;
+}
+
+/* enforce hidden attribute effect */
+
+[hidden] {
+  display: none !important;
+}

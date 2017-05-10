@@ -1,0 +1,75 @@
+{
+  "name": "webadmin-client",
+  "version": "0.1.0",
+  "description": "Web client application",
+  "private": true,
+  "main": "./buildOutput/js/main-bundle.js",
+  "scripts": {
+    "clean": "rimraf ./buildOutput/* ./codegen/*",
+
+    "compile": "npm run compile-prod",
+      "compile-prod": "ngc -p tsconfig-aot.json",
+
+    "bundle": "npm run bundle-dev",
+      "bundle-dev":  "webpack --config ./webpack.config.dev.js  --display-error-details --display-cached --progress --profile --colors",
+      "bundle-watch": "npm run bundle-dev -- --watch",
+      "bundle-prod": "webpack --config ./webpack.config.prod.js --display-error-details --display-cached --progress --profile --colors",
+        "prebundle-prod": "npm run compile-prod",
+
+    "build": "npm run build-dev",
+      "build-dev":  "npm run bundle-dev",
+        "prebuild-dev":  "npm run clean",
+      "build-watch": "npm run bundle-watch",
+        "prebuild-watch-dev": "npm run clean",
+      "build-prod": "npm run bundle-prod",
+        "prebuild-prod": "npm run clean",
+
+    "start": "npm run serve",
+
+    "serve": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "2.4.8",
+    "@angular/compiler": "2.4.8",
+    "@angular/core": "2.4.8",
+    "@angular/forms": "2.4.8",
+    "@angular/http": "2.4.8",
+    "@angular/platform-browser": "2.4.8",
+    "@angular/platform-browser-dynamic": "2.4.8",
+    "@angular/router": "3.4.7",
+    "@types/js-base64": "2.1.4",
+    "@types/requirejs": "2.1.28",
+    "core-js": "~2.4.1",
+    "reflect-metadata": "~0.1.9",
+    "rxjs": "~5.0.2",
+    "tslib": "~1.6.0",
+    "zone.js": "~0.7.8"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "2.4.8",
+    "angular-router-loader": "~0.5.0",
+    "angular2-template-loader": "~0.6.2",
+    "autoprefixer": "~6.7.7",
+    "awesome-typescript-loader": "~3.1.2",
+    "copy-webpack-plugin": "~1.1.1",
+    "css-loader": "~0.25.0",
+    "json-loader": "~0.5.4",
+    "lite-server": "2.3.0",
+    "node-sass": "~3.10.0",
+    "postcss-loader": "~0.13.0",
+    "raw-loader": "~0.5.1",
+    "rimraf": "~2.5.2",
+    "sass-loader": "~4.0.2",
+    "source-map-loader": "~0.1.5",
+    "style-loader": "~0.13.2",
+    "ts-loader": "2.0.3",
+    "typescript": "2.2.1",
+    "watchpack": "~1.3.1",
+    "webpack": "2.2.1",
+    "webpack-bundle-analyzer": "~2.3.1",
+    "webpack-dev-server": "2.4.1"
+  }
+}

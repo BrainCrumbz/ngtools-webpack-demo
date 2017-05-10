@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  flex: none;
+}
+
+:host > section {
+  flex: 1 0 auto;
+
+  /* use full page width */
+  margin-right: 0;
+  margin-left: 0;
+}
+
+main {
+  /* reduce spacing between sidebar and main */
+  padding-left: 0;
+}
