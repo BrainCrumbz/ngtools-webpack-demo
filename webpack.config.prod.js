@@ -115,7 +115,7 @@ var config = {
         warnings: false,
         screw_ie8: true,
         drop_debugger: true,
-        drop_console: true,
+        drop_console: false, //true,
         dead_code: true,
         unused: true,
         conditionals: true,

@@ -30,7 +30,7 @@ import '../shared/view/styles.css';
     HomeComponent,
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
   ],
   providers: [
   ],
