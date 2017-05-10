@@ -18,9 +18,9 @@ var config = {
   // Client application only, no dev server
   entry: {
 
-    'vendor': common.absPaths.vendorEntryAot,
+    'vendor': common.absPaths.vendorEntryJit,
 
-    'main': common.absPaths.mainEntryAot,
+    'main': common.absPaths.mainEntryJit,
 
   },
 
