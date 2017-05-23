@@ -1,3 +1,4 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 
@@ -51,6 +52,7 @@ var relPaths = {
   bundle: 'js/[name]-bundle.js',
   sourceMap: 'js/[name]-bundle.js.map',
   chunk: 'js/[id]-chunk.js',
+  css: 'css/[name]-bundle.css',
 };
 
 var patterns = {
@@ -219,29 +221,34 @@ var rules = {
   // NOTE: this assumes that their filename doesn't contain `component`
   globalCss: {
     test: /^(?!.*component).*\.css$/,
-    // TODO disable sourceMap until `TypeError: Path must be a string. Received undefined` error is fixed
-    /*
-    use: [
-      {
-        loader: 'style-loader',
-      }, {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-        },
-      }, {
-        loader: 'postcss-loader',
-        options: {
-          sourceMap: true,
-        },
-      },
+    use: ExtractTextPlugin.extract({
+      use: [
+        'raw-loader',
+        'postcss-loader',
+      ],
+      fallback: 'style-loader',
+    }),
+    include: [
+      absPaths.clientSrc,
+      absPaths.nodeModules, // allow to import Sass from third-party libraries
     ],
-    */
-    use: [
-      'style-loader',
-      'css-loader',
-      'postcss-loader',
+    exclude: [
+      absPaths.buildOutput, // skip output
+      absPaths.codegen, // skip (AOT) generated code
     ],
+  },
+
+  // support for requiring global, crosswide Sass as <style> tag
+  // NOTE: this assumes that their filename doesn't contain `component`
+  globalSass: {
+    test: /^(?!.*component).*\.scss$/,
+    use: ExtractTextPlugin.extract({
+      use: [
+        'raw-loader',
+        'postcss-loader',
+      ],
+      fallback: 'style-loader',
+    }),
     include: [
       absPaths.clientSrc,
       absPaths.nodeModules, // allow to import CSS from third-party libraries

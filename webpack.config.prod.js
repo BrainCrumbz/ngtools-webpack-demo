@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ngToolsWebpack = require('@ngtools/webpack');
 
 var common = require('./webpack.common.js');
@@ -99,6 +100,8 @@ var config = {
       filename: common.relPaths.bundle,
       minChunks: mod => /node_modules/.test(mod.resource),
     }),
+
+    new ExtractTextPlugin(common.relPaths.css),
 
     // use @ngtools for AoT build
     new ngToolsWebpack.AotPlugin({

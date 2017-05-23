@@ -1,7 +1,9 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var common = require('./webpack.common.js');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var url = require('url');
+
+var common = require('./webpack.common.js');
 
 // ensure development environment
 process.env.NODE_ENV = 'development';
@@ -116,6 +118,8 @@ var config = {
       filename: common.relPaths.bundle,
       minChunks: Infinity,
     }),
+
+    new ExtractTextPlugin(common.relPaths.css),
 
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),

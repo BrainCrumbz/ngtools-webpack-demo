@@ -56,6 +56,7 @@
     "awesome-typescript-loader": "~3.1.2",
     "copy-webpack-plugin": "~1.1.1",
     "css-loader": "~0.25.0",
+    "extract-text-webpack-plugin": "~2.1.0",
     "json-loader": "~0.5.4",
     "lite-server": "2.3.0",
     "node-sass": "~3.10.0",

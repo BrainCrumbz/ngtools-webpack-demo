@@ -32,6 +32,7 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/**/*-jit.ts",
+    "src/main.browser-aot.ts",
     "buildOutput",
     "codegen",
     "coverage",
