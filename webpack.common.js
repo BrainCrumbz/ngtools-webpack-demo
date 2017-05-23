@@ -64,6 +64,12 @@ var patterns = {
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
 };
 
+var skip = {
+  testsAndAsync: /\.(spec|e2e|async)\.ts$/,
+  e2eAndAsync: /\.(e2e|async)\.ts$/,
+  tests: /\.(spec|e2e)\.ts$/,
+};
+
 var rules = {
 
   // pre-loaders
@@ -73,7 +79,9 @@ var rules = {
   javascriptTest: {
     enforce: 'pre',
     test: /\.js$/,
-    loader: 'source-map-loader',
+    use: [
+      'source-map-loader',
+    ],
     exclude: [
       // these packages have problems with their sourcemaps
       path.join(absPaths.nodeModules, '@angular'),
@@ -89,11 +97,18 @@ var rules = {
   // `loadChildren` router instructions
   typescriptJit: {
     test: /\.ts$/,
-    use: [
-      tsLoaderJit,
-      'angular2-template-loader',
-      'angular-router-loader',
-    ],
+    use: [{
+      loader: tsLoaderJit,
+      options: {
+        compilerOptions: {
+          noEmit: false,
+        },
+      },
+    }, {
+      loader: 'angular2-template-loader',
+    }, {
+      loader: 'angular-router-loader',
+    }],
     include: [
       absPaths.clientSrc,
     ],
@@ -101,7 +116,7 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       absPaths.codegen, // skip (AOT) generated code
-      /\.(spec|e2e|async)\.ts$/, // skip all test and async TS files
+      skip.testsAndAsync, // skip all test and async TS files
     ],
   },
 
@@ -136,16 +151,22 @@ var rules = {
     exclude: [
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      /\.(spec|e2e|async)\.ts$/, // skip all test and async TS files
+      skip.testsAndAsync, // skip all test and async TS files
     ],
   },
 
   typescriptTest: {
     test: /\.ts$/,
-    use: [
-      tsLoaderJit,
-      'angular2-template-loader',
-    ],
+    use: [{
+      loader: tsLoaderJit,
+      options: {
+        compilerOptions: {
+          noEmit: false,
+        },
+      },
+    }, {
+      loader: 'angular2-template-loader',
+    }],
     include: [
       absPaths.clientSrc,
     ],
@@ -153,7 +174,7 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       absPaths.codegen, // skip (AOT) generated code
-      /\.(e2e|async)\.ts$/, // skip end-to-end test and async TS files
+      skip.e2eAndAsync, // skip end-to-end test and async TS files
     ],
   },
 
@@ -234,7 +255,9 @@ var rules = {
   // support for requiring HTML as raw text
   html: {
     test: /\.html$/,
-    loader: 'raw-loader',
+    use: [
+      'raw-loader',
+    ],
     include: [
       absPaths.clientSrc,
     ],
@@ -252,12 +275,14 @@ var rules = {
   istanbul: {
     enforce: 'post',
     test: /\.(js|ts)$/,
-    loader: 'istanbul-instrumenter-loader',
+    use: [
+      'istanbul-instrumenter-loader',
+    ],
     include: [
       absPaths.clientSrc,
     ],
     exclude: [
-      /\.(e2e|spec)\.ts$/, // skip all test files
+      skip.tests, // skip all test files
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       absPaths.codegen, // skip (AOT) generated code
