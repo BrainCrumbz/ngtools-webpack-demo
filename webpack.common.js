@@ -223,7 +223,8 @@ var rules = {
     test: /^(?!.*component).*\.css$/,
     use: ExtractTextPlugin.extract({
       use: [
-        'raw-loader',
+        'to-string-loader',
+        'css-loader',
         'postcss-loader',
       ],
       fallback: 'style-loader',
@@ -244,7 +245,8 @@ var rules = {
     test: /^(?!.*component).*\.scss$/,
     use: ExtractTextPlugin.extract({
       use: [
-        'raw-loader',
+        'to-string-loader',
+        'css-loader',
         'postcss-loader',
       ],
       fallback: 'style-loader',
