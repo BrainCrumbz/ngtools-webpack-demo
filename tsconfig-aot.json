@@ -32,14 +32,13 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/**/*-jit.ts",
-    "src/app/module-dev.ts",
     "buildOutput",
     "codegen",
     "coverage",
     "node_modules"
   ],
   "angularCompilerOptions": {
-    "entryModule": "src/app/module-prod#AppModule",
+    "entryModule": "src/app/module#AppModule",
     "genDir": "codegen",
     "skipMetadataEmit" : true
   },

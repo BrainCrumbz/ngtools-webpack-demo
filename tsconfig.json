@@ -30,7 +30,6 @@
   },
   "exclude": [
     "src/**/*-aot.ts",
-    "src/app/module-prod.ts",
     "buildOutput",
     "codegen",
     "coverage",

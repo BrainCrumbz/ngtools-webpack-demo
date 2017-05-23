@@ -13,9 +13,6 @@ import { SharedModule } from '../shared/module';
 // import global styles common to all app modules
 import '../shared/view/styles.css';
 
-// NOTE: in actual project, dev and prod app modules might be different
-// due to some needed modules
-
 @NgModule({
   imports: [
     // third-party modules
