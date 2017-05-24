@@ -38,7 +38,6 @@ var absPaths = {
   mainEntryAot: path.join(clientSrc, 'main.browser-aot.ts'),
   vendorEntryAot: path.join(clientSrc, 'vendor-aot.ts'),
 
-  testEntry: path.join(clientSrc, 'karma-entry.js'),
   staticFiles: path.join(clientSrc, 'static'),
 };
 
@@ -56,8 +55,6 @@ var relPaths = {
 };
 
 var patterns = {
-  testSources: path.join(absPaths.clientSrc, '**/*.spec.ts'),
-  appSources: path.join(absPaths.clientSrc, '**/!(*.spec).ts'),
   // See https://github.com/angular/angular/issues/11580
   // https://github.com/angular/angular/issues/14898
   // https://github.com/angular/angular.io/issues/3514
@@ -76,20 +73,7 @@ var rules = {
 
   // pre-loaders
 
-  // Source map loader support for *.js files
-  // Extracts SourceMaps for source files that are added as sourceMappingURL comment.
-  javascriptTest: {
-    enforce: 'pre',
-    test: /\.js$/,
-    use: [
-      'source-map-loader',
-    ],
-    exclude: [
-      // these packages have problems with their sourcemaps
-      path.join(absPaths.nodeModules, '@angular'),
-      path.join(absPaths.nodeModules, 'rxjs'),
-    ],
-  },
+  // None
 
   // normal loaders
 
@@ -154,29 +138,6 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       skip.testsAndAsync, // skip all test and async TS files
-    ],
-  },
-
-  typescriptTest: {
-    test: /\.ts$/,
-    use: [{
-      loader: tsLoaderJit,
-      options: {
-        compilerOptions: {
-          noEmit: false,
-        },
-      },
-    }, {
-      loader: 'angular2-template-loader',
-    }],
-    include: [
-      absPaths.clientSrc,
-    ],
-    exclude: [
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
-      skip.e2eAndAsync, // skip end-to-end test and async TS files
     ],
   },
 
@@ -279,24 +240,7 @@ var rules = {
 
   // post-loaders
 
-  // instrument only code that isn't test or third-party
-  // delay coverage until after tests are run, fixing transpiled source coverage error
-  istanbul: {
-    enforce: 'post',
-    test: /\.(js|ts)$/,
-    use: [
-      'istanbul-instrumenter-loader',
-    ],
-    include: [
-      absPaths.clientSrc,
-    ],
-    exclude: [
-      skip.tests, // skip all test files
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
-    ],
-  },
+  // None
 
 };
 
