@@ -32,10 +32,10 @@ var absPaths = {
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
 
-  mainEntryJit: path.join(clientSrc, 'main.browser-jit.ts'),
+  mainEntryJit: path.join(clientSrc, 'main.browser.ts'),
   vendorEntryJit: path.join(clientSrc, 'vendor-jit.ts'),
 
-  mainEntryAot: path.join(clientSrc, 'main.browser-aot.ts'),
+  mainEntryAot: path.join(clientSrc, 'main.browser.ts'),
   vendorEntryAot: path.join(clientSrc, 'vendor-aot.ts'),
 
   staticFiles: path.join(clientSrc, 'static'),
@@ -112,24 +112,6 @@ var rules = {
     use: [{
       loader: '@ngtools/webpack',
     }],
-    // use regular JiT loader, with AoT options
-    /*
-    use: [{
-      loader: tsLoaderJit,
-      options: {
-        configFileName: './tsconfig-aot.json',
-      },
-    }, {
-      loader: 'angular2-template-loader',
-    }, {
-      loader: 'angular-router-loader',
-      options: {
-        aot: true,
-        genDir: './codegen',
-        debug: false,
-      },
-    }],
-    */
     include: [
       absPaths.clientSrc,
       absPaths.codegen, // include (AOT) generated code

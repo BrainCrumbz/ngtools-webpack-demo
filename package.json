@@ -7,9 +7,6 @@
   "scripts": {
     "clean": "rimraf ./buildOutput/* ./codegen/*",
 
-    "compile": "npm run compile-prod",
-      "compile-prod": "ngc -p tsconfig-aot.json",
-
     "bundle": "npm run bundle-dev",
       "bundle-dev":  "webpack --config ./webpack.config.dev.js  --display-error-details --display-cached --progress --profile --colors",
       "bundle-watch": "npm run bundle-dev -- --watch",
