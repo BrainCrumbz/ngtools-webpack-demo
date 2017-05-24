@@ -227,14 +227,6 @@ var noParse = [
   /.+zone\.js\/dist\/.+/,
 ];
 
-var postcss = [
-
-  autoprefixer({
-    browsers: ['last 2 versions'],
-  }),
-
-];
-
 var resolve = {
 
   // resolve files using only those extensions
@@ -263,7 +255,6 @@ var common = {
   patterns: patterns,
   rules: rules,
   noParse: noParse,
-  postcss: postcss,
   resolve: resolve,
   buildDefines: buildDefines,
 };

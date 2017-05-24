@@ -100,11 +100,6 @@ var config = {
       // Note: this will be deprecated in v3 or later. Remove when loaders will update.
       debug: true,
 
-      options: {
-
-        postcss: common.postcss,
-
-      },
     }),
 
     // Provides context to Angular's use of System.import
