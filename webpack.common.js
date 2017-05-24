@@ -39,6 +39,7 @@ var absPaths = {
   vendorEntryAot: path.join(clientSrc, 'vendor-aot.ts'),
 
   staticFiles: path.join(clientSrc, 'static'),
+  styles: path.join(clientSrc, 'styles'),
 };
 
 var relPaths = {
@@ -121,9 +122,9 @@ var rules = {
   },
 
   // support for requiring component-scoped CSS as raw text
-  // NOTE: this assumes that their filename ends in 'component.css'
+  // NOTE: this assumes that they're outside of global styles folder
   componentCss: {
-    test: /component\.css$/,
+    test: /\.css$/,
     use: [
       'raw-loader',
       'postcss-loader',
@@ -132,6 +133,7 @@ var rules = {
       absPaths.clientSrc,
     ],
     exclude: [
+      absPaths.styles, // skip global styles
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       absPaths.codegen, // skip (AOT) generated code
@@ -139,9 +141,9 @@ var rules = {
   },
 
   // support for requiring component-scoped Sass as raw text
-  // NOTE: this assumes that their filename ends in 'component.scss'
+  // NOTE: this assumes that they're outside of global styles folder
   componentSass: {
-    test: /component\.scss$/,
+    test: /\.scss$/,
     use: [
       'raw-loader',
       'postcss-loader',
@@ -151,27 +153,28 @@ var rules = {
       absPaths.clientSrc,
     ],
     exclude: [
+      absPaths.styles, // skip global styles
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
       absPaths.codegen, // skip (AOT) generated code
     ],
   },
 
-  // support for requiring global, crosswide CSS as <style> tag
-  // NOTE: this assumes that their filename doesn't contain `component`
+  // support for requiring global, crosswide CSS styles as <style> tag
+  // NOTE: this assumes that they're within global styles folder or in a library
   globalCss: {
-    test: /^(?!.*component).*\.css$/,
+    test: /\.css$/,
     use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
       use: [
         'to-string-loader',
         'css-loader',
         'postcss-loader',
       ],
-      fallback: 'style-loader',
     }),
     include: [
-      absPaths.clientSrc,
-      absPaths.nodeModules, // allow to import Sass from third-party libraries
+      absPaths.styles, // include only global styles
+      absPaths.nodeModules, // allow importing from third-party libraries
     ],
     exclude: [
       absPaths.buildOutput, // skip output
@@ -179,22 +182,22 @@ var rules = {
     ],
   },
 
-  // support for requiring global, crosswide Sass as <style> tag
-  // NOTE: this assumes that their filename doesn't contain `component`
+  // support for requiring global, crosswide Sass styles as <style> tag
+  // NOTE: this assumes that they're within global styles folder or in a library
   globalSass: {
-    test: /^(?!.*component).*\.scss$/,
+    test: /\.scss$/,
     use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
       use: [
         'to-string-loader',
         'css-loader',
         'postcss-loader',
         'sass-loader',
       ],
-      fallback: 'style-loader',
     }),
     include: [
-      absPaths.clientSrc,
-      absPaths.nodeModules, // allow to import CSS from third-party libraries
+      absPaths.styles, // include only global styles
+      absPaths.nodeModules, // allow importing from third-party libraries
     ],
     exclude: [
       absPaths.buildOutput, // skip output

@@ -11,7 +11,7 @@ import { HomeComponent } from '../home/view/home.component';
 import { SharedModule } from '../shared/module';
 
 // import global styles common to all app modules
-import '../shared/view/styles.css';
+import '../styles/styles.css';
 
 @NgModule({
   imports: [
