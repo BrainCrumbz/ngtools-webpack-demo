@@ -43,7 +43,7 @@ var config = {
     path: common.absPaths.buildOutput,
 
     // A template for the name of each output file on disk, as a relative path
-    filename: common.relPaths.bundle,
+    filename: common.relPaths.bundleJs,
 
     // A template for the name of each source-map file, as a relative path
     sourceMapFilename: common.relPaths.sourceMap,
@@ -115,11 +115,11 @@ var config = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['main', 'vendor'],
-      filename: common.relPaths.bundle,
+      filename: common.relPaths.bundleJs,
       minChunks: Infinity,
     }),
 
-    new ExtractTextPlugin(common.relPaths.css),
+    new ExtractTextPlugin(common.relPaths.bundleCss),
 
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),

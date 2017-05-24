@@ -28,7 +28,7 @@ var config = {
   output: {
 
     path: common.absPaths.buildOutput,
-    filename: common.relPaths.bundle,
+    filename: common.relPaths.bundleJs,
     sourceMapFilename: common.relPaths.sourceMap,
     chunkFilename: common.relPaths.chunk,
 
@@ -97,11 +97,11 @@ var config = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['main', 'vendor'],
-      filename: common.relPaths.bundle,
+      filename: common.relPaths.bundleJs,
       minChunks: mod => /node_modules/.test(mod.resource),
     }),
 
-    new ExtractTextPlugin(common.relPaths.css),
+    new ExtractTextPlugin(common.relPaths.bundleCss),
 
     // use @ngtools for AoT build
     new ngToolsWebpack.AotPlugin({

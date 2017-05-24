@@ -44,14 +44,11 @@ var absPaths = {
 var relPaths = {
   localDevRoot: 'buildOutput/',
 
-  main: 'js/main-bundle.js',
-  vendor: 'js/vendor-bundle.js',
-
   // allow for multiple entry points, hence multiple outputs
-  bundle: 'js/[name]-bundle.js',
+  bundleJs: 'js/[name]-bundle.js',
   sourceMap: 'js/[name]-bundle.js.map',
   chunk: 'js/[id]-chunk.js',
-  css: 'css/[name]-bundle.css',
+  bundleCss: 'css/[name]-bundle.css',
 };
 
 var patterns = {
