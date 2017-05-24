@@ -24,6 +24,18 @@
     "**/*.js.map": true
  },
 
+  // Configure glob patterns of file paths to exclude from file watching. Changing this setting requires a restart. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
+  "files.watcherExclude": {
+    "**/buildOutput": true,
+    "**/codegen": true
+  },
+
+  // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
+  "search.exclude": {
+    "**/buildOutput": true,
+    "**/codegen": true
+  },
+
   // Specifica il percorso della cartella che contiene i file tsserver e lib*.d.ts da usare.
   "typescript.tsdk": "node_modules/typescript/lib"
 
