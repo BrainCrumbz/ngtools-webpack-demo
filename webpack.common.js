@@ -188,6 +188,7 @@ var rules = {
         'to-string-loader',
         'css-loader',
         'postcss-loader',
+        'sass-loader',
       ],
       fallback: 'style-loader',
     }),
