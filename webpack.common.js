@@ -28,7 +28,6 @@ var clientSrc = path.join(clientRoot, 'src');
 var absPaths = {
   clientSrc: clientSrc,
   buildOutput: path.join(clientRoot, 'buildOutput'),
-  codegen: path.join(clientRoot, 'codegen'),
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
 
@@ -59,12 +58,6 @@ var patterns = {
   // The (\\|\/) piece accounts for path separators in *nix and Windows
   //angularContext: /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
-};
-
-var skip = {
-  testsAndAsync: /\.(spec|e2e|async)\.ts$/,
-  e2eAndAsync: /\.(e2e|async)\.ts$/,
-  tests: /\.(spec|e2e)\.ts$/,
 };
 
 var rules = {
@@ -99,8 +92,6 @@ var rules = {
     exclude: [
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
-      skip.testsAndAsync, // skip all test and async TS files
     ],
   },
 
@@ -112,12 +103,10 @@ var rules = {
     }],
     include: [
       absPaths.clientSrc,
-      absPaths.codegen, // include (AOT) generated code
     ],
     exclude: [
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      skip.testsAndAsync, // skip all test and async TS files
     ],
   },
 
@@ -136,7 +125,6 @@ var rules = {
       absPaths.styles, // skip global styles
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
     ],
   },
 
@@ -156,7 +144,6 @@ var rules = {
       absPaths.styles, // skip global styles
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
     ],
   },
 
@@ -178,7 +165,6 @@ var rules = {
     ],
     exclude: [
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
     ],
   },
 
@@ -201,7 +187,6 @@ var rules = {
     ],
     exclude: [
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
     ],
   },
 
@@ -217,7 +202,6 @@ var rules = {
     exclude: [
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
-      absPaths.codegen, // skip (AOT) generated code
     ],
   },
 

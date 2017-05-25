@@ -31,7 +31,6 @@
   "exclude": [
     "src/**/*-aot.ts",
     "buildOutput",
-    "codegen",
     "coverage",
     "node_modules"
   ],

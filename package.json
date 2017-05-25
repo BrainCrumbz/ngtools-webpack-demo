@@ -5,7 +5,7 @@
   "private": true,
   "main": "./buildOutput/js/main-bundle.js",
   "scripts": {
-    "clean": "rimraf ./buildOutput/* ./codegen/*",
+    "clean": "rimraf ./buildOutput/*",
 
     "bundle": "npm run bundle-dev",
       "bundle-dev":  "webpack --config ./webpack.config.dev.js  --display-error-details --display-cached --progress --profile --colors",
