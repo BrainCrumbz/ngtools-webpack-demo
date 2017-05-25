@@ -27,7 +27,7 @@ var clientSrc = path.join(clientRoot, 'src');
 
 var absPaths = {
   clientSrc: clientSrc,
-  buildOutput: path.join(clientRoot, 'buildOutput'),
+  buildOutput: path.join(clientRoot, 'dist'),
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
 
@@ -35,7 +35,7 @@ var absPaths = {
 };
 
 var relPaths = {
-  localDevRoot: 'buildOutput/',
+  localDevRoot: 'dist/',
 
   // keep leading `./` in entry point relative paths
   mainEntryJit: './src/main.browser.ts',
@@ -59,7 +59,7 @@ var patterns = {
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
   clientSrc: /src/,
   styles: /styles/,
-  buildOutput: /buildOutput/,
+  buildOutput: /dist/,
   nodeModules: /node_modules/,
 };
 

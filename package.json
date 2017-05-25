@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "Web client application",
   "private": true,
-  "main": "./buildOutput/js/main-bundle.js",
+  "main": "./dist/js/main-bundle.js",
   "scripts": {
-    "clean": "rimraf ./buildOutput/*",
+    "clean": "rimraf ./dist/*",
 
     "bundle": "npm run bundle-dev",
       "bundle-dev":  "webpack --config ./webpack.config.dev.js  --display-error-details --display-cached --progress --profile --colors",

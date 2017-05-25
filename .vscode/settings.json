@@ -12,7 +12,7 @@
 
   // Consente di configurare i criteri di ricerca GLOB per escludere file e cartelle.
   "files.exclude": {
-    "**/buildOutput": true,
+    "**/dist": true,
     "**/codegen": true,
     "**/coverage": true,
     "**/node_modules": true,
@@ -26,13 +26,13 @@
 
   // Configure glob patterns of file paths to exclude from file watching. Changing this setting requires a restart. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
   "files.watcherExclude": {
-    "**/buildOutput": true,
+    "**/dist": true,
     "**/codegen": true
   },
 
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
   "search.exclude": {
-    "**/buildOutput": true,
+    "**/dist": true,
     "**/codegen": true
   },
 

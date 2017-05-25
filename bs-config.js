@@ -11,6 +11,6 @@ module.exports = {
     ignored: '**'
   },
   server: {
-    baseDir: './buildOutput',
+    baseDir: './dist',
   }
 }

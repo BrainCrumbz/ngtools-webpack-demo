@@ -40,5 +40,5 @@ testem.log
 Thumbs.db
 
 # build artifacts
-/buildOutput
+/dist
 /codegen
