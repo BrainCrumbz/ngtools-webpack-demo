@@ -32,7 +32,7 @@ var absPaths = {
   coverage: path.join(clientRoot, 'coverage'),
 
   staticFiles: path.join(clientSrc, 'static'),
-  styles: path.join(clientSrc, 'styles'),
+  styles: path.join(clientRoot, 'styles'),
 };
 
 var relPaths = {

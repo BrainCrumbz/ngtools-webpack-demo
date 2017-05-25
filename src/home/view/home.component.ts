@@ -20,6 +20,7 @@ import { Component } from '@angular/core';
   styles: [`
     .container {
       margin-top: 40px;
+      background-color: peru;
     }
   `],
 })
