@@ -69,6 +69,7 @@ var config = {
       common.rules.typescriptJit,
       common.rules.componentSass,
       common.rules.componentCss,
+      common.rules.globalSass,
       common.rules.globalCss,
       common.rules.html,
 

@@ -47,6 +47,7 @@ var config = {
       common.rules.typescriptAot,
       common.rules.componentSass,
       common.rules.componentCss,
+      common.rules.globalSass,
       common.rules.globalCss,
       common.rules.html,
 
