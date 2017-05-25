@@ -31,18 +31,19 @@ var absPaths = {
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
 
-  mainEntryJit: path.join(clientSrc, 'main.browser.ts'),
-  vendorEntryJit: path.join(clientSrc, 'vendor-jit.ts'),
-
-  mainEntryAot: path.join(clientSrc, 'main.browser.ts'),
-  vendorEntryAot: path.join(clientSrc, 'vendor-aot.ts'),
-
   staticFiles: path.join(clientSrc, 'static'),
   styles: path.join(clientSrc, 'styles'),
 };
 
 var relPaths = {
   localDevRoot: 'buildOutput/',
+
+  // keep leading `./` in entry point relative paths
+  mainEntryJit: './src/main.browser.ts',
+  vendorEntryJit: './src/vendor-jit.ts',
+
+  mainEntryAot: './src/main.browser.ts',
+  vendorEntryAot: './src/vendor-aot.ts',
 
   // allow for multiple entry points, hence multiple outputs
   bundleJs: 'js/[name]-bundle.js',

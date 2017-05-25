@@ -25,15 +25,15 @@ var config = {
   // Cache generated modules and chunks to improve performance in incremental builds
   cache: true,
 
-  // Set base directory for resolving entry points
-  context: common.absPaths.clientSrc,
+  // No need to set `context`, base directory for resolving entry points:
+  // entry point paths are relative to current directory
 
   entry: {
 
-    'vendor': common.absPaths.vendorEntryJit,
+    'vendor': common.relPaths.vendorEntryJit,
 
     // Client application main entry point
-    'main': common.absPaths.mainEntryJit,
+    'main': common.relPaths.mainEntryJit,
 
   },
 

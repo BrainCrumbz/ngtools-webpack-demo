@@ -13,15 +13,15 @@ var config = {
   // Source maps are completely regenerated for each chunk at each build
   devtool: 'source-map',
 
-  // Set base directory for resolving entry points
-  context: common.absPaths.clientSrc,
+  // No need to set `context`, base directory for resolving entry points:
+  // entry point paths are relative to current directory
 
   // Client application only, no dev server
   entry: {
 
-    'vendor': common.absPaths.vendorEntryAot,
+    'vendor': common.relPaths.vendorEntryAot,
 
-    'main': common.absPaths.mainEntryAot,
+    'main': common.relPaths.mainEntryAot,
 
   },
 
