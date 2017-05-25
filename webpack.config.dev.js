@@ -63,11 +63,11 @@ var config = {
       // none
 
       // Loaders
-      common.rules.typescriptJit,
-      common.rules.componentSass,
-      common.rules.componentCss,
-      common.rules.globalSass,
-      common.rules.globalCss,
+      common.rules.typescript.jit,
+      common.rules.sass.global,
+      common.rules.sass.component,
+      common.rules.css.global,
+      common.rules.css.component,
       common.rules.html,
 
       // Post-loaders

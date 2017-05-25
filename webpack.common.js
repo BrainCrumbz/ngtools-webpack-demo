@@ -70,102 +70,114 @@ var rules = {
 
   // normal loaders
 
-  // all `.ts` files will be compiled through tsc by chosen tsLoaderJit.
-  // `angular2-template-loader` converts template/style URLs into inlined template/styles.
-  // `angular-router-loader` replaces string-based module lazy loading routes with actual
-  // `loadChildren` router instructions
-  typescriptJit: {
-    test: /\.ts$/,
-    use: [{
-      loader: tsLoaderJit,
-      options: {
-        compilerOptions: {
-          noEmit: false,
+  typescript: {
+
+    // all `.ts` files will be compiled through tsc by chosen tsLoaderJit.
+    // `angular2-template-loader` converts template/style URLs into inlined template/styles.
+    // `angular-router-loader` replaces string-based module lazy loading routes with actual
+    // `loadChildren` router instructions
+    jit: {
+      test: /\.ts$/,
+      use: [{
+        loader: tsLoaderJit,
+        options: {
+          compilerOptions: {
+            noEmit: false,
+          },
         },
-      },
-    }, {
-      loader: 'angular2-template-loader',
-    }, {
-      loader: 'angular-router-loader',
-    }],
-    include: [
-      patterns.clientSrc,
-    ],
+      }, {
+        loader: 'angular2-template-loader',
+      }, {
+        loader: 'angular-router-loader',
+      }],
+      include: [
+        patterns.clientSrc,
+      ],
+    },
+
+    aot: {
+      test: /\.ts$/,
+      // use @ngtools loader
+      use: [{
+        loader: '@ngtools/webpack',
+      }],
+      include: [
+        patterns.clientSrc,
+      ],
+    },
+
   },
 
-  typescriptAot: {
-    test: /\.ts$/,
-    // use @ngtools loader
-    use: [{
-      loader: '@ngtools/webpack',
-    }],
-    include: [
-      patterns.clientSrc,
-    ],
-  },
+  css: {
 
-  // support for requiring component-scoped CSS as raw text
-  // NOTE: this assumes that they're outside of global styles folder
-  componentCss: {
-    test: /\.css$/,
-    use: [
-      'raw-loader',
-      'postcss-loader',
-    ],
-    include: [
-      patterns.clientSrc,
-    ],
-  },
-
-  // support for requiring component-scoped Sass as raw text
-  // NOTE: this assumes that they're outside of global styles folder
-  componentSass: {
-    test: /\.scss$/,
-    use: [
-      'raw-loader',
-      'postcss-loader',
-      'sass-loader',
-    ],
-    include: [
-      patterns.clientSrc,
-    ],
-  },
-
-  // support for requiring global, crosswide CSS styles as <style> tag
-  // NOTE: this assumes that they're within global styles folder or in a library
-  globalCss: {
-    test: /\.css$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
+    // support for requiring component-scoped CSS as raw text
+    // NOTE: this assumes that they're outside of global styles folder
+    component: {
+      test: /\.css$/,
       use: [
-        'to-string-loader',
-        'css-loader',
+        'raw-loader',
         'postcss-loader',
       ],
-    }),
-    include: [
-      patterns.styles, // include global styles
-      patterns.nodeModules, // allow importing from third-party libraries
-    ],
+      include: [
+        patterns.clientSrc,
+      ],
+    },
+
+    // support for requiring global, crosswide CSS styles as <style> tag
+    // NOTE: this assumes that they're within global styles folder or in a library
+    global: {
+      test: /\.css$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'to-string-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      }),
+      include: [
+        patterns.styles, // include global styles
+        patterns.nodeModules, // allow importing from third-party libraries
+      ],
+    },
+
   },
 
-  // support for requiring global, crosswide Sass styles as <style> tag
-  // NOTE: this assumes that they're within global styles folder or in a library
-  globalSass: {
-    test: /\.scss$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
+  sass: {
+
+    // support for requiring component-scoped Sass as raw text
+    // NOTE: this assumes that they're outside of global styles folder
+    component: {
+      test: /\.scss$/,
       use: [
-        'to-string-loader',
-        'css-loader',
+        'raw-loader',
         'postcss-loader',
         'sass-loader',
       ],
-    }),
-    include: [
-      patterns.styles, // include global styles
-      patterns.nodeModules, // allow importing from third-party libraries
-    ],
+      include: [
+        patterns.clientSrc,
+      ],
+    },
+
+    // support for requiring global, crosswide Sass styles as <style> tag
+    // NOTE: this assumes that they're within global styles folder or in a library
+    global: {
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'to-string-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      }),
+      include: [
+        patterns.styles, // include global styles
+        patterns.nodeModules, // allow importing from third-party libraries
+      ],
+    },
+
   },
 
   // support for requiring HTML as raw text
