@@ -30,7 +30,6 @@ var absPaths = {
   buildOutput: path.join(clientRoot, 'buildOutput'),
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
-  styles: path.join(clientRoot, 'styles'),
 
   staticFiles: path.join(clientSrc, 'static'),
 };
@@ -58,6 +57,10 @@ var patterns = {
   // https://github.com/angular/angular.io/issues/3514
   // The (\\|\/) piece accounts for path separators in *nix and Windows
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
+  clientSrc: /src/,
+  styles: /styles/,
+  buildOutput: /buildOutput/,
+  nodeModules: /node_modules/,
 };
 
 var rules = {
@@ -85,6 +88,7 @@ var rules = {
     }, {
       loader: 'angular-router-loader',
     }],
+    /*
     include: [
       absPaths.clientSrc,
     ],
@@ -92,6 +96,7 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
     ],
+    */
   },
 
   typescriptAot: {
@@ -100,6 +105,7 @@ var rules = {
     use: [{
       loader: '@ngtools/webpack',
     }],
+    /*
     include: [
       absPaths.clientSrc,
     ],
@@ -107,6 +113,7 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
     ],
+    */
   },
 
   // support for requiring component-scoped CSS as raw text
@@ -118,12 +125,12 @@ var rules = {
       'postcss-loader',
     ],
     include: [
-      absPaths.clientSrc,
+      patterns.clientSrc,
     ],
     exclude: [
-      absPaths.styles, // skip global styles
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
+      patterns.styles, // skip global styles
+      patterns.nodeModules, // skip all node modules
+      patterns.buildOutput, // skip output
     ],
   },
 
@@ -137,12 +144,12 @@ var rules = {
       'sass-loader',
     ],
     include: [
-      absPaths.clientSrc,
+      patterns.clientSrc,
     ],
     exclude: [
-      absPaths.styles, // skip global styles
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
+      patterns.styles, // skip global styles
+      patterns.nodeModules, // skip all node modules
+      patterns.buildOutput, // skip output
     ],
   },
 
@@ -159,11 +166,12 @@ var rules = {
       ],
     }),
     include: [
-      absPaths.styles, // include only global styles
-      absPaths.nodeModules, // allow importing from third-party libraries
+      patterns.styles, // include global styles
+      patterns.nodeModules, // allow importing from third-party libraries
     ],
     exclude: [
-      absPaths.buildOutput, // skip output
+      patterns.clientSrc, // skip component styles
+      patterns.buildOutput, // skip output
     ],
   },
 
@@ -181,11 +189,12 @@ var rules = {
       ],
     }),
     include: [
-      absPaths.styles, // include only global styles
-      absPaths.nodeModules, // allow importing from third-party libraries
+      patterns.styles, // include global styles
+      patterns.nodeModules, // allow importing from third-party libraries
     ],
     exclude: [
-      absPaths.buildOutput, // skip output
+      patterns.clientSrc, // skip component styles
+      patterns.buildOutput, // skip output
     ],
   },
 
@@ -195,6 +204,7 @@ var rules = {
     use: [
       'raw-loader',
     ],
+    /*
     include: [
       absPaths.clientSrc,
     ],
@@ -202,6 +212,7 @@ var rules = {
       absPaths.nodeModules, // skip all node modules
       absPaths.buildOutput, // skip output
     ],
+    */
   },
 
   // post-loaders
