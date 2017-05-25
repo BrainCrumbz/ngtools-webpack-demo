@@ -30,9 +30,9 @@ var absPaths = {
   buildOutput: path.join(clientRoot, 'buildOutput'),
   nodeModules: path.join(clientRoot, 'node_modules'),
   coverage: path.join(clientRoot, 'coverage'),
+  styles: path.join(clientRoot, 'styles'),
 
   staticFiles: path.join(clientSrc, 'static'),
-  styles: path.join(clientRoot, 'styles'),
 };
 
 var relPaths = {
