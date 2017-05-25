@@ -5,10 +5,10 @@ module.exports = {
   injectChanges: false,
   open: false,
   files: [
-    './src/**/*.{html,htm,css,js}'
+    '',
   ],
   watchOptions: {
-    ignored: 'node_modules'
+    ignored: '**'
   },
   server: {
     baseDir: './buildOutput',
