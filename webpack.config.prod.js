@@ -71,19 +71,6 @@ var config = {
 
     new webpack.DefinePlugin(common.buildDefines()),
 
-    // Until loaders are updated, use the LoaderOptionsPlugin to pass custom properties to third-party loaders
-    new webpack.LoaderOptionsPlugin({
-
-      // Put loaders into debug mode
-      // Note: this will be deprecated in v3 or later. Remove when loaders will update.
-      debug: false,
-
-      // Put loaders into minimize mode.
-      // Note: this will be deprecated in v3 or later. Remove when loaders will update.
-      minimize: true,
-
-    }),
-
     // Provides context to Angular's use of System.import
     new webpack.ContextReplacementPlugin(
       common.patterns.angularContext,
@@ -94,7 +81,7 @@ var config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: ['main', 'vendor'],
       filename: common.relPaths.bundleJs,
-      minChunks: mod => /node_modules/.test(mod.resource),
+      minChunks: mod => common.patterns.nodeModules.test(mod.resource),
     }),
 
     new ExtractTextPlugin(common.relPaths.bundleCss),
@@ -107,54 +94,7 @@ var config = {
     }),
 
     // Minimize scripts
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-
-      // to debug production build, uncomment lines in [debug] section and comment lines in [prod] section
-
-      // [prod]: Settings for production build
-      beautify: false,
-      mangle: {
-        screw_ie8 : true,
-        keep_fnames: true,
-      },
-      comments: false,
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        drop_debugger: true,
-        drop_console: false, //true,
-        dead_code: true,
-        unused: true,
-        conditionals: true,
-        comparisons: true,
-        sequences: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
-
-      // [debug]: Settings when debugging production build
-      /*
-      beautify: true,
-      mangle: false,
-      comments: true,
-      compress: {
-        warnings: true,
-        screw_ie8: false,
-        drop_debugger: false,
-        drop_console: false,
-        dead_code: false,
-        unused: false,
-        conditionals: false,
-        comparisons: false,
-        sequences: false,
-        evaluate: false,
-        if_return: false,
-        join_vars: false,
-      },
-      */
-    }),
+    new webpack.optimize.UglifyJsPlugin(),
 
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),
