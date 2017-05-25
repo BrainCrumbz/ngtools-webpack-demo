@@ -86,7 +86,6 @@ var config = {
   resolve: {
 
     extensions: common.resolve.extensions,
-    modules: common.resolve.modules,
 
   },
 
@@ -106,7 +105,8 @@ var config = {
     // Provides context to Angular's use of System.import
     new webpack.ContextReplacementPlugin(
       common.patterns.angularContext,
-      common.absPaths.clientSrc
+      common.absPaths.clientSrc,
+      {}
     ),
 
     new webpack.optimize.CommonsChunkPlugin({

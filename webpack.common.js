@@ -57,7 +57,6 @@ var patterns = {
   // https://github.com/angular/angular/issues/14898
   // https://github.com/angular/angular.io/issues/3514
   // The (\\|\/) piece accounts for path separators in *nix and Windows
-  //angularContext: /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
 };
 
@@ -221,10 +220,6 @@ var resolve = {
   // resolve files using only those extensions
   extensions: ['.ts', '.js', '.json'],
 
-  // resolve modules also looking in those paths
-  modules: [
-    absPaths.nodeModules,
-  ],
 };
 
 function buildDefines() {
