@@ -37,9 +37,7 @@
     "node_modules"
   ],
   "angularCompilerOptions": {
-    "entryModule": "src/app/module#AppModule",
-    "genDir": "codegen",
-    "skipMetadataEmit" : true
+    "genDir": "."
   },
   "compileOnSave": false,
   "buildOnSave": false

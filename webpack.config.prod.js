@@ -100,7 +100,9 @@ var config = {
 
     // use @ngtools for AoT build
     new ngToolsWebpack.AotPlugin({
-      tsConfigPath: './tsconfig-aot.json'
+      tsConfigPath: './tsconfig-aot.json',
+      skipMetadataEmit: true,
+      entryModule: 'src/app/module#AppModule',
     }),
 
     // Minimize scripts
