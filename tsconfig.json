@@ -15,6 +15,7 @@
     "strictNullChecks": false,
     "pretty": true,
     "sourceMap": true,
+    "declaration": false,
     "lib": [
       "dom",
       "es6"
@@ -25,12 +26,9 @@
     ],
     "types": [
       "requirejs"
-    ],
-    "outDir": "buildOutput"
+    ]
   },
   "exclude": [
-    "src/**/*-aot.ts",
-    "buildOutput",
     "coverage",
     "node_modules"
   ],
