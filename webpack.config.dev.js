@@ -22,9 +22,6 @@ var config = {
   // 'cheap-module-eval-source-map' is quicker, but breakpoints don't work
   devtool: 'source-map',
 
-  // Cache generated modules and chunks to improve performance in incremental builds
-  cache: true,
-
   // No need to set `context`, base directory for resolving entry points:
   // entry point paths are relative to current directory
 
@@ -92,15 +89,6 @@ var config = {
   plugins: [
 
     new webpack.DefinePlugin(common.buildDefines()),
-
-    // Until loaders are updated, use the LoaderOptionsPlugin to pass custom properties to third-party loaders
-    new webpack.LoaderOptionsPlugin({
-
-      // Put loaders into debug mode
-      // Note: this will be deprecated in v3 or later. Remove when loaders will update.
-      debug: true,
-
-    }),
 
     // Provides context to Angular's use of System.import
     new webpack.ContextReplacementPlugin(
