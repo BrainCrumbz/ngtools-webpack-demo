@@ -63,7 +63,6 @@ var patterns = {
 var rules = {
 
   // pre-loaders
-
   // None
 
   // normal loaders
@@ -206,7 +205,6 @@ var rules = {
   },
 
   // post-loaders
-
   // None
 
 };
