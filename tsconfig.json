@@ -28,6 +28,9 @@
       "requirejs"
     ]
   },
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "coverage",
     "node_modules"

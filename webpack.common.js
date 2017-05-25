@@ -88,15 +88,9 @@ var rules = {
     }, {
       loader: 'angular-router-loader',
     }],
-    /*
     include: [
-      absPaths.clientSrc,
+      patterns.clientSrc,
     ],
-    exclude: [
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
-    ],
-    */
   },
 
   typescriptAot: {
@@ -105,15 +99,9 @@ var rules = {
     use: [{
       loader: '@ngtools/webpack',
     }],
-    /*
     include: [
-      absPaths.clientSrc,
+      patterns.clientSrc,
     ],
-    exclude: [
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
-    ],
-    */
   },
 
   // support for requiring component-scoped CSS as raw text
@@ -126,11 +114,6 @@ var rules = {
     ],
     include: [
       patterns.clientSrc,
-    ],
-    exclude: [
-      patterns.styles, // skip global styles
-      patterns.nodeModules, // skip all node modules
-      patterns.buildOutput, // skip output
     ],
   },
 
@@ -145,11 +128,6 @@ var rules = {
     ],
     include: [
       patterns.clientSrc,
-    ],
-    exclude: [
-      patterns.styles, // skip global styles
-      patterns.nodeModules, // skip all node modules
-      patterns.buildOutput, // skip output
     ],
   },
 
@@ -168,10 +146,6 @@ var rules = {
     include: [
       patterns.styles, // include global styles
       patterns.nodeModules, // allow importing from third-party libraries
-    ],
-    exclude: [
-      patterns.clientSrc, // skip component styles
-      patterns.buildOutput, // skip output
     ],
   },
 
@@ -192,10 +166,6 @@ var rules = {
       patterns.styles, // include global styles
       patterns.nodeModules, // allow importing from third-party libraries
     ],
-    exclude: [
-      patterns.clientSrc, // skip component styles
-      patterns.buildOutput, // skip output
-    ],
   },
 
   // support for requiring HTML as raw text
@@ -204,15 +174,9 @@ var rules = {
     use: [
       'raw-loader',
     ],
-    /*
     include: [
-      absPaths.clientSrc,
+      patterns.clientSrc,
     ],
-    exclude: [
-      absPaths.nodeModules, // skip all node modules
-      absPaths.buildOutput, // skip output
-    ],
-    */
   },
 
   // post-loaders
