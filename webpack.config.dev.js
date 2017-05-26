@@ -43,7 +43,7 @@ var config = {
     filename: common.relPaths.bundleJs,
 
     // A template for the name of each source-map file, as a relative path
-    sourceMapFilename: common.relPaths.sourceMap,
+    // Leave default one
 
     // A template for the name of each intermediate chunk file, as a relative path
     chunkFilename: common.relPaths.chunk,

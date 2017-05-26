@@ -46,7 +46,6 @@ var relPaths = {
 
   // allow for multiple entry points, hence multiple outputs
   bundleJs: 'js/[name]-bundle.js',
-  sourceMap: 'js/[name]-bundle.js.map',
   chunk: 'js/[id]-chunk.js',
   bundleCss: 'css/[name]-bundle.css',
 };

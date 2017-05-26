@@ -29,7 +29,6 @@ var config = {
 
     path: common.absPaths.buildOutput,
     filename: common.relPaths.bundleJs,
-    sourceMapFilename: common.relPaths.sourceMap,
     chunkFilename: common.relPaths.chunk,
 
     publicPath: common.urls.public,
