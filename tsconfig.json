@@ -16,6 +16,7 @@
     "pretty": true,
     "sourceMap": true,
     "declaration": false,
+    "baseUrl": "",
     "lib": [
       "dom",
       "es6"
