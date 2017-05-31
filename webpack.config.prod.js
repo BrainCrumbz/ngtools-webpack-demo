@@ -93,7 +93,9 @@ var config = {
     }),
 
     // Minimize scripts
+    /*
     new webpack.optimize.UglifyJsPlugin(),
+    */
 
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),
