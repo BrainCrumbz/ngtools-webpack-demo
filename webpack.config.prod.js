@@ -94,7 +94,7 @@ var config = {
     new ngToolsWebpack.AotPlugin({
       tsConfigPath: './tsconfig-aot.json',
       skipMetadataEmit: true,
-      entryModule: 'src/app/module#AppModule',
+      entryModule: 'src/app/module#AppModule',  // drop extension and trailing `./`
     }),
 
     // Minimize scripts
