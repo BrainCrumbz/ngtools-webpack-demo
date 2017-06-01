@@ -70,12 +70,17 @@ var config = {
 
     new webpack.DefinePlugin(buildDefines()),
 
+    // TODO exclude this plugin until this is fixed:
+    // https://github.com/angular/angular-cli/issues/4431
+    // https://github.com/angular/angular-cli/issues/6518
+    /*
     // Provides context to Angular's use of System.import
     new webpack.ContextReplacementPlugin(
       common.patterns.angularContext,
       common.absPaths.clientSrc,
       {}
     ),
+    */
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['main', 'vendor'],
@@ -93,9 +98,7 @@ var config = {
     }),
 
     // Minimize scripts
-    /*
     new webpack.optimize.UglifyJsPlugin(),
-    */
 
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),
