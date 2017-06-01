@@ -58,7 +58,6 @@ var patterns = {
   angularContext: /angular(\\|\/)core(\\|\/)@angular/,
   clientSrc: /src/,
   styles: /styles/,
-  buildOutput: /dist/,
   nodeModules: /node_modules/,
 };
 
@@ -110,7 +109,7 @@ var rules = {
   css: {
 
     // support for requiring component-scoped CSS as raw text
-    // NOTE: this assumes that they're outside of global styles folder
+    // NOTE: this assumes that they're within client source folder
     component: {
       test: /\.css$/,
       use: [
@@ -123,7 +122,7 @@ var rules = {
     },
 
     // support for requiring global, crosswide CSS styles as <style> tag
-    // NOTE: this assumes that they're within global styles folder or in a library
+    // NOTE: this assumes that they're within global styles folder or node modules folder
     global: {
       test: /\.css$/,
       use: ExtractTextPlugin.extract({
@@ -145,7 +144,7 @@ var rules = {
   sass: {
 
     // support for requiring component-scoped Sass as raw text
-    // NOTE: this assumes that they're outside of global styles folder
+    // NOTE: this assumes that they're within client source folder
     component: {
       test: /\.scss$/,
       use: [
@@ -206,15 +205,6 @@ var resolve = {
 
 };
 
-function buildDefines() {
-  var packageDef = require('./package.json');
-
-  return {
-    'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    'VERSION': JSON.stringify(packageDef.version),
-  };
-}
-
 var common = {
   urls: urls,
   ports: ports,
@@ -224,7 +214,17 @@ var common = {
   rules: rules,
   noParse: noParse,
   resolve: resolve,
-  buildDefines: buildDefines,
 };
 
-module.exports = common;
+exports.common = common;
+
+function buildDefines() {
+  var packageDef = require('./package.json');
+
+  return {
+    'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'VERSION': JSON.stringify(packageDef.version),
+  };
+}
+
+exports.buildDefines = buildDefines;

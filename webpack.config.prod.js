@@ -3,7 +3,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ngToolsWebpack = require('@ngtools/webpack');
 
-var common = require('./webpack.common.js');
+var { common, buildDefines } = require('./webpack.common.js');
 
 // ensure production environment
 process.env.NODE_ENV = 'production';
@@ -68,7 +68,7 @@ var config = {
 
   plugins: [
 
-    new webpack.DefinePlugin(common.buildDefines()),
+    new webpack.DefinePlugin(buildDefines()),
 
     // Provides context to Angular's use of System.import
     new webpack.ContextReplacementPlugin(
