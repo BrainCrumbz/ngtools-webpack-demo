@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from '../app/view/component';
 import { appRoutes, appRoutingOpts } from '../app/routing';
+import { appReducer } from '../app/reducer';
 
 import { HomeComponent } from '../home/view/home.component';
 
@@ -21,6 +23,8 @@ import '../../styles/styles.css';
 
     // custom routing
     RouterModule.forRoot(appRoutes, appRoutingOpts),
+
+    StoreModule.provideStore(appReducer),
 
     // custom feature modules
     SharedModule,
