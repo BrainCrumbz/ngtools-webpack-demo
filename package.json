@@ -41,7 +41,7 @@
     "@types/requirejs": "2.1.28",
     "core-js": "~2.4.1",
     "reflect-metadata": "~0.1.10",
-    "rxjs": "~5.0.2",
+    "rxjs": "5.4.3",
     "tslib": "~1.7.1",
     "zone.js": "~0.8.10"
   },
