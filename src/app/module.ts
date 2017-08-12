@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppComponent } from '../app/view/component';
 import { appRoutes, appRoutingOpts } from '../app/routing';
@@ -18,6 +19,8 @@ import '../../styles/styles.css';
     // third-party modules
     BrowserModule,
     HttpModule,
+
+    TabsModule.forRoot(),
 
     // custom routing
     RouterModule.forRoot(appRoutes, appRoutingOpts),
