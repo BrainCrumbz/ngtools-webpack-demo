@@ -24,7 +24,8 @@ import '../../styles/styles.css';
     // custom routing
     RouterModule.forRoot(appRoutes, appRoutingOpts),
 
-    StoreModule.provideStore(appReducer),
+    // custom state management
+    StoreModule.forRoot(appReducer),
 
     // custom feature modules
     SharedModule,
