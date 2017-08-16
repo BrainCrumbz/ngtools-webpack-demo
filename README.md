@@ -60,3 +60,8 @@ without trailing `./`, without `.ts` extension, with module class name as a suff
 * `ContextReplacementPlugin` is currently disabled as a workaround to 
 ngtools/webpack issues https://github.com/angular/angular-cli/issues/4431 and 
 https://github.com/angular/angular-cli/issues/6518
+
+## Integrating other libraries
+
+See [chore/ngrx branch](https://github.com/BrainCrumbz/ngtools-webpack-demo/tree/chore/ngrx) for this same project integrating [ngrx platform](https://github.com/ngrx/platform).  
+See [chore/ngx-boostrap branch](https://github.com/BrainCrumbz/ngtools-webpack-demo/tree/chore/ngx-boostrap) for this same project integrating [ngx-boostrap library](https://github.com/valor-software/ngx-bootstrap).
